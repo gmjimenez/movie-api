@@ -17,7 +17,7 @@ describe('API', () => {
       it('it should GET any reply', (done) => {
         chai.request(server)
             .get('/')
-            .end(function(err, res){
+            .end((err, res) => {
                 res.should.have.status(200);
               done();
             });
