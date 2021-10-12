@@ -1,6 +1,12 @@
 pipeline {
-  agent any
+  agent {
+     environment {
+        CI = 'true'
+    }
+  }
   tools {nodejs "nodejs"}  
+
+  
   stages {
         
      
