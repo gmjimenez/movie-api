@@ -1,5 +1,3 @@
-#!/usr/bin/env groovy
-
 pipeline {
   agent any
     
@@ -7,23 +5,18 @@ pipeline {
     
   stages {
         
-    stage('Git') {
-      steps {
-        git 'https://github.com/gmjimenez/movie-api.git'
-      }
-    }
      
     stage('Build') {
       steps {
         sh 'npm install'
-         sh 'node server'
+         
       }
     }  
     
             
     stage('Test') {
       steps {
-        sh 'node test'
+        sh 'npm test'
       }
     }
   }
