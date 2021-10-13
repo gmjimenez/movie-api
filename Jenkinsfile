@@ -1,11 +1,11 @@
 pipeline {
   agent any
 
-   environment {
+  
+  tools {nodejs "nodejs"}  
+environment {
         CI = 'true' 
     }
-  tools {nodejs "nodejs"}  
-
   
   stages {
         
@@ -23,10 +23,6 @@ pipeline {
         sh 'npm test'
       }
     }
-     stage('Example') {
-            steps { 
-                echo 'Hello World'
-            }
-        }
+     
   }
 }
