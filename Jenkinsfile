@@ -1,7 +1,5 @@
 pipeline {
-   agent {
-        docker { image 'node:14-alpine' }
-    }
+  agent any
   tools { nodejs 'nodejs' }
   environment {
         CI = 'true'
@@ -9,6 +7,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        sh 'sudo apt-get install docker-ce docker-ce-cli containerd.io'
         sh 'npm install'
       }
     }
