@@ -13,7 +13,8 @@ pipeline {
     }
     stage('Gen .deb') {
       steps {
-        sh 'sudo docker build -t build_deb'
+        sh 'docker build -t build_deb'
+
       }
     }
     //stage('Test') {
