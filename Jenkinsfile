@@ -29,7 +29,7 @@ environment {
     stage('Artifact') {
       steps {
         script{
-          #!/bin/bash
+          sh '#!/bin/bash
 set -e
 if [[ $UID == 0 ]]; then
     echo "You must not run this as root." 1>&2
@@ -49,7 +49,7 @@ NAME=base-files-11ubuntu4
 #Image name build_deb is rewritten by the deb file to build
 #Example: build_base-files
 sudo docker build -t build_deb ${WORKDIR}
-sudo docker run -e NAME=${NAME} -e UGID="${UID}:$(id -u)" -v ${WORKDIR}/out:/deb -it build_deb
+sudo docker run -e NAME=${NAME} -e UGID="${UID}:$(id -u)" -v ${WORKDIR}/out:/deb -it build_deb'
         }
          
       }
