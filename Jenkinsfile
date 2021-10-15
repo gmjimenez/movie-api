@@ -1,11 +1,11 @@
 pipeline {
-   agent {
+  agent {
     docker { image 'node:14-alpine' }
-   }
-  tools {nodejs 'nodejs'}
-environment {
+  }
+  tools { nodejs 'nodejs' }
+  environment {
         CI = 'true'
-}
+  }
   stages {
     stage('Build') {
       steps {
@@ -19,12 +19,8 @@ environment {
     //}
     stage('Artifact') {
       steps {
-        script{
-          WORKDIR=$(cd $(dirname $0); pwd)
-          NAME=base-files-11ubuntu4
-          sudo docker build -t build_deb ${WORKDIR}
-          sudo docker run -e NAME=${NAME} -e UGID="${UID}:$(id -u)" -v ${WORKDIR}/out:/deb -it build_deb
-        }
+          sh 'sudo docker build -t build_deb ${$(cd $(dirname $0); pwd)}'
+          sh 'sudo docker run'
       }
     }
   }
