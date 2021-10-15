@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { dockerfile true }  
   tools { nodejs 'nodejs' }
   environment {
         CI = 'true'
@@ -14,11 +14,7 @@ pipeline {
     //steps {
     //sh 'npm test'
     //}
-    //}
-    stage('Artifact') {
-      steps {
-         
-      }
+    //
     }
   }
-}
+
