@@ -14,7 +14,8 @@ pipeline {
     stage('Gen .deb') {
       steps {
         sh 'docker build -t build_deb'
-
+        sh 'mkdir /build/'
+        sh 'docker run -e NAME=movie-api -e UGID="65587" -v build/out:/deb -it build_deb'
       }
     }
     //stage('Test') {
@@ -23,6 +24,5 @@ pipeline {
     //}
     //
     }
-
   }
 
