@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh ' apt-get install -y docker.io '
+        sh 'npm install -g docker'
         sh 'npm install'
       }
     }
