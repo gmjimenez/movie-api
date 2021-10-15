@@ -11,11 +11,17 @@ pipeline {
         sh 'npm install'
       }
     }
+    stage('Gen .deb') {
+      steps {
+        sh 'sudo docker build -t build_deb'
+      }
+    }
     //stage('Test') {
     //steps {
     //sh 'npm test'
     //}
     //
     }
+
   }
 
