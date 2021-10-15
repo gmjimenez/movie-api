@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'sudo apt-get install docker-ce docker-ce-cli containerd.io'
+        sh 'apt-get install docker-ce docker-ce-cli containerd.io'
         sh 'npm install'
       }
     }
