@@ -24,5 +24,10 @@ pipeline {
     //}
     //
     }
+    post {
+        always {
+      archiveArtifacts artifacts: 'build_deb', onlyIfSuccessful: true
+        }
+    }
   }
 
