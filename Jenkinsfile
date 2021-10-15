@@ -17,8 +17,7 @@ pipeline {
     //}
     stage('Artifact') {
       steps {
-          sh 'sudo docker build -t build_deb ${$(cd $(dirname $0); pwd)}'
-          sh 'sudo docker run'
+         
       }
     }
   }
