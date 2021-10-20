@@ -21,6 +21,7 @@ pipeline {
     }
     stage('Gen .deb') {
       steps {
+        sh 'systemctl start docker'
         sh 'docker build - < Dockerfile'
       }
     }
