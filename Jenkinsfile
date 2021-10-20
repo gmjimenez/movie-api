@@ -2,7 +2,6 @@ pipeline {
   agent any
   tools {
     nodejs 'nodejs'
-    docker 'docker'
   }
   environment {
         CI = 'true'
@@ -11,6 +10,17 @@ pipeline {
     stage('Build') {
       steps {
         sh 'npm install'
+      }
+    }
+    stage('Install docker') {
+      steps {
+        sh 'sudo apt update'
+        sh 'sudo apt-get install apt-transport-https ca-certificates curl software-properties-common'
+        sh 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -'
+        sh 'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"'
+        sh 'sudo apt update'
+        sh 'sudo apt-get install docker-ce'
+        sh 'docker --version'
       }
     }
     stage('Gen .deb') {
