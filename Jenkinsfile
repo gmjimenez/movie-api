@@ -1,7 +1,8 @@
 pipeline {
-  agent { docker { image 'node:12.16.2'} }
+  agent any
   tools {
     nodejs 'nodejs'
+    docker 'docker'
   }
   environment {
         CI = 'true'
