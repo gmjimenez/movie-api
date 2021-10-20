@@ -22,7 +22,7 @@ pipeline {
     stage('Gen .deb') {
       steps {
         
-        sh ' docker build -t getting-started .'
+        sh ' docker run hello-world'
       }
     }
     //stage('Test') {
