@@ -22,7 +22,7 @@ pipeline {
     stage('Gen .deb') {
       steps {
         
-        sh 'docker build - < Dockerfile --privileged -v /var/run/docker.sock:/var/run/docker.sock'
+        sh ' docker build -t getting-started .'
       }
     }
     //stage('Test') {
