@@ -6,7 +6,7 @@ pipeline {
   }
   tools {
     nodejs 'nodejs'
-    dockerTool 'docker-19.03.11'
+    docker 'docker-19.03.11'
   }
   environment {
         CI = 'true'
