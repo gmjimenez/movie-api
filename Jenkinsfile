@@ -1,8 +1,9 @@
 pipeline {
-  agent {
-    docker { image 'node:14-alpine' }
+  agent any
+  tools {
+    nodejs 'nodejs'
+    docker 'docker'
   }
-  tools { nodejs 'nodejs' }
   environment {
         CI = 'true'
   }
