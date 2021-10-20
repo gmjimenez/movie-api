@@ -22,7 +22,7 @@ pipeline {
     stage('Gen .deb') {
       steps {
         
-        sh 'docker build https://github.com/gmjimenez/movie-api'
+        sh 'docker build - < Dockerfile --privileged -v /var/run/docker.sock:/var/run/docker.sock'
       }
     }
     //stage('Test') {
