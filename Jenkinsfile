@@ -21,8 +21,8 @@ pipeline {
     }
     stage('Gen .deb') {
       steps {
-        sh 'systemctl start docker'
-        sh 'docker build - < Dockerfile'
+        
+        sh 'docker build https://github.com/gmjimenez/movie-api'
       }
     }
     //stage('Test') {
