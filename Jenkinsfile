@@ -12,9 +12,11 @@ pipeline {
         sh 'npm install'
       }
     }
-    stage('Gen .zip') {
+    stage('Gen .deb') {
       steps {
-        sh 'zip -r api-latest.zip movie-api'
+        sh 'docker build -t build_deb'
+        sh 'mkdir buildf'
+        sh 'docker run -e NAME=movie-api -e UGID="65587" -v buildf/out:/deb -it build_deb'
       }
     }
     //stage('Test') {
