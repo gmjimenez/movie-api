@@ -22,8 +22,7 @@ pipeline {
     stage('Gen .deb') {
       steps {
         
-        sh 'chmod u+x build.sh'
-        sh './build.sh'
+        sh 'docker build -t movie-api:latest'
       }
     }
     //stage('Test') {
