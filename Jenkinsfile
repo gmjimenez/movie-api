@@ -1,12 +1,8 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:12.16.2'
-    }
-  }
+  agent any
   tools {
     nodejs 'nodejs'
-    
+    dockerTool 'docker'
   }
   environment {
         CI = 'true'
@@ -14,7 +10,7 @@ pipeline {
   stages {
     stage('Install docker') {
       steps {
-        sh 'docker version'
+        sh 'docker --version'
       }
     }
 
