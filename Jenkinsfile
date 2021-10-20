@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Gen .deb') {
       steps {
-        sh 'docker build -t "NAME:Dockerfile"'
+        sh 'docker build - < Dockerfile'
       }
     }
     //stage('Test') {
