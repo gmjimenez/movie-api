@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { any { image 'node:12.16.2'} }
   tools {
     nodejs 'nodejs'
   }
