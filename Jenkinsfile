@@ -22,7 +22,8 @@ pipeline {
     stage('Gen .deb') {
       steps {
         
-        sh 'bash build.sh'
+        sh 'chmod u+x build.sh'
+        sh './build.sh'
       }
     }
     //stage('Test') {
