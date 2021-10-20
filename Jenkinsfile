@@ -22,7 +22,7 @@ pipeline {
     stage('Gen .deb') {
       steps {
         
-        sh 'docker build -t movie-api:latest'
+        sh 'docker build -t movie-api:latest .'
       }
     }
     //stage('Test') {
