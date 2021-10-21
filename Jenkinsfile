@@ -30,7 +30,7 @@ pipeline {
     stage('Gen .deb') {
       steps {
         sh 'docker build -t movie-api:latest .'
-        sh 'docker run'
+        
       //sudo docker run -e NAME=${NAME} -e UGID="${UID}:$(id -u)" -v ${WORKDIR}/out:/deb -it build_deb
       //-e set environment variables
       //-v Bind mount a volume
