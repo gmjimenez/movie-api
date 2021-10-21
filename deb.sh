@@ -12,5 +12,6 @@ Description: api
 EOF
 touch postinst
 dpkg-deb --build $WORKDIR
+ls
 
 #

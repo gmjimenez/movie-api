@@ -38,6 +38,17 @@ pipeline {
       //-it instructs Docker to allocate a pseudo-TTY connected to the container’s stdin; creating an interactive bash shell in the container
       }
     }
+     stage('ls') {
+      steps {
+        sh 'ls'
+        
+      //sudo docker run -e NAME=${NAME} -e UGID="${UID}:$(id -u)" -v ${WORKDIR}/out:/deb -it build_deb
+      //-e set environment variables
+      //-v Bind mount a volume
+      //-u Username or UID (format: <name|uid>[:<group|gid>])
+      //-it instructs Docker to allocate a pseudo-TTY connected to the container’s stdin; creating an interactive bash shell in the container
+      }
+    }
     //stage('Test') {
     //steps {
     //sh 'npm test'
