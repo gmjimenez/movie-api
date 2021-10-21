@@ -2,7 +2,7 @@
 FROM alpine:3.13
 
 # Use /usr/src/app as our workdir. The following instructions will be executed in this location.
-WORKDIR /usr/src/app
+WORKDIR /var/lib/jenkins/workspace/movie-api
 
 # Copy the hello.sh file from this location to /usr/src/app/ creating /usr/src/app/hello.sh
 COPY deb.sh .

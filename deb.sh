@@ -1,14 +1,15 @@
 #!/bin/bash
-mkdir helloworld && mkdir helloworld/DEBIAN
-mkdir -p helloworld/usr/local/bin cp /usr/local/bin/helloworld.sh helloworld/usr/local/bin/
-cat > helloworld/DEBIAN/control << EOF
-Package: helloworld
+WORKDIR=$pwd
+mkdir ${WORKDIR}/DEBIAN
+mkdir -p ${WORKDIR}/usr/local/bin cp /usr/local/bin/deb.sh ${WORKDIR}/usr/local/bin/
+cat > ${WORKDIR}/DEBIAN/control << EOF
+Package: movie-api
 Version: 0.2
-Maintainer: King Foo
+Maintainer: melissa.jimenezc
 Architecture: all
-Description: hello world 
+Description: api 
 EOF
 touch postinst
-dpkg-deb --build helloworld
+dpkg-deb --build ${WORKDIR}
 
 #
