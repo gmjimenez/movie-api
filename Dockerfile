@@ -1,28 +1,14 @@
-FROM ubuntu:20.04
-ARG NAME="base-files-11ubuntu4"
-#Describe the directory name to be built
-ARG UID=65587
-#With a large value so as not to conflict
-RUN sed -i"" -e 's%http://[^ ]\+%mirror://mirrors.ubuntu.com/mirrors.txt%g' /etc/apt/sources.list \
-&& apt-get update \
-&& apt-get -y upgrade \
-&& apt-get install -y --no-install-recommends build-essential devscripts zstd gawk libc6 libcrypt1 debhelper dh-systemd apt-utils sudo \
-&& rm -rf /tmp/* /var/tmp/* \
-&& apt-get clean
-#Install dependencies
+# Start from the alpine image that is smaller but no fancy tools
+FROM alpine:3.13
 
-RUN echo "root:root" | chpasswd && \
-    adduser --disabled-password --uid ${UID} --gecos "" docker && \
-    echo "docker:docker" | chpasswd && \
-    echo "%docker    ALL=(ALL)   NOPASSWD:    ALL" >> /etc/sudoers.d/docker && \
-    chmod 0440 /etc/sudoers.d/docker
-#Creating a user that sudo can use without entering a password
+# Use /usr/src/app as our workdir. The following instructions will be executed in this location.
+WORKDIR /usr/src/app
 
-RUN mkdir -p /debuild/build /deb 
-ADD ./${NAME} /debuild/build/${NAME}
-ADD ./debuild.sh /debuild/debuild.sh
-RUN chmod +x /debuild/debuild.sh \
-&& chown -R docker:docker /debuild
-USER ${UID}
-WORKDIR /debuild
-CMD ["./debuild.sh"]
+# Copy the hello.sh file from this location to /usr/src/app/ creating /usr/src/app/hello.sh
+COPY hello.sh .
+
+# Alternatively, if we skipped chmod earlier, we can add execution permissions during the build.
+# RUN chmod +x hello.sh
+
+# When running docker run the command will be ./hello.sh
+CMD ./hello.sh
