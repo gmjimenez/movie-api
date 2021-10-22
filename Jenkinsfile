@@ -41,6 +41,8 @@ pipeline {
      stage('ls') {
       steps {
         sh 'ls'
+        sh 'cd ..'
+        sh 'ls'
         
       //sudo docker run -e NAME=${NAME} -e UGID="${UID}:$(id -u)" -v ${WORKDIR}/out:/deb -it build_deb
       //-e set environment variables
