@@ -39,19 +39,15 @@ pipeline {
         sh './deb.sh'
         dir('/var/lib/jenkins/workspace/') {
           sh 'pwd'
-          sh 'mkdir api-artifacts'
+          sh 'git clone https://github.com/gmjimenez/api-artifacts.git'
           sh 'ls'
           sh 'cp movie-api.deb api-artifacts/'
         }
 
         dir('/var/lib/jenkins/workspace/api-artifacts') {
-          sh 'echo "# api-artifacts" >> README.md'
-          sh'git init'
-          sh'git add README.md'
-          sh'git commit -m "first commit"'
-          sh'git branch -M main'
-          sh'git remote add origin https://github.com/gmjimenez/api-artifacts.git'
-          sh'git push -u origin main'
+          sh 'git add .'
+          sh 'git commit -m "api.deb:latest"'
+          sh 'git push'
         }
       }
     }
