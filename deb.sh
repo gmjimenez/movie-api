@@ -13,8 +13,6 @@ EOF
 touch DEBIAN/postinst
 chmod +x DEBIAN/postinst
 dpkg-deb --build $WORKDIR
-ls
-cd ..
-ls
+
 
 #
