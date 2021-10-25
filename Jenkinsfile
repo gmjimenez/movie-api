@@ -41,7 +41,9 @@ pipeline {
     stage('push artifact') {
       steps {
         sh 'cd /var/lib/jenkins/workspace/'
+        sh 'pwd'
         sh 'mkdir api-artifacts'
+        sh 'ls'
         sh 'cp movie-api.deb api-artifacts/'
         sh 'cd api-artifacts/'
         sh 'echo "# api-artifacts" >> README.md'
