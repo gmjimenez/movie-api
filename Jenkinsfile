@@ -27,13 +27,16 @@ pipeline {
         sh 'npm install'
       }
     }
-    stage('Gen .deb') {
+  /*   stage('Gen .deb') {
       steps {
         sh 'docker build -t movie-api:latest .'
+        
       }
-    }
+    } */
     stage('push artifact') {
       steps {
+        sh 'chmod +x deb.sh'
+        sh './deb.sh'
         dir('/var/lib/jenkins/workspace/') {
           sh 'pwd'
           sh 'mkdir api-artifacts'
