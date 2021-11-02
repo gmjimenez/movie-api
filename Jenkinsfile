@@ -41,7 +41,7 @@ pipeline {
           sh 'mkdir movie-api'
         } */
         dir('/var/lib/jenkins/workspace/') {
-          sh 'cp movie-ui.deb api-artifacts/movie-api'
+          sh 'cp movie-api.deb api-artifacts/movie-api'
         }
         dir('/var/lib/jenkins/workspace/api-artifacts') {
           withCredentials([[$class : 'UsernamePasswordMultiBinding',
